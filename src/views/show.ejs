@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <title>D-produtividade</title>
+</head>
+<body class="bg-dark">
+    <%- include('partials/bootstrap') %>
+    <%- include('partials/header')%>
+    <div class="container mt-5 text-center">
+        <h1 class="text-white text-center mb-2"><%= taskList.title%></h1>
+        <form action="/app/<%= taskList.id %>/nova-tarefa" method="POST" class="mb-3">
+            <div class="list-group-item d-flex align-items-end justify-content-between py-2">
+                <input type="text" class="form-control" name="title" placeholder="Adicionar nova tarefa...">
+                <button type="submit" class="btn-list mx-2 mt-1">Adicionar</button>
+            </div>
+        </form>
+        
+            <ul class="list-group">
+            <% taskList.tasks.forEach(task => { %>
+                <li class="list-group-item d-flex justify-content-between align-items-center <%= task.completed ? 'bg-success text-white' : '' %>">
+                <%= task.title %>
+                    <% if (!task.completed) { %>
+                    <form action="/app/<%= taskList.id %>/completar/<%= task.id %>" method="POST">
+                        <button type="submit" class="btn btn-success btn-sm">Completar</button>
+                    </form>
+                    <% } else { %>
+                    <form action="/app/<%= taskList.id %>/desfazer/<%= task.id %>" method="POST">
+                        <button type="submit" class="btn btn-danger btn-sm">Desfazer</button>
+                    </form>
+                    <% } %>
+                </li>
+                <% }); %>
+            </ul>
+            <hr class="separator"/>
+            <a href="/app" class="btn btn-danger">Voltar</a>
+    </div>
+    <%- include('partials/footer')%>
+</body>
+</html>

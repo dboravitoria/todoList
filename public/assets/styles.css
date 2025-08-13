@@ -1,0 +1,19 @@
+.btn-list{
+    background-color:#D86E6E;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 2rem;
+    text-decoration: none;
+}
+.btn-list:hover{
+    background-color:  #592A2A;
+    transition: all .3s;
+}
+.separator{
+    border-bottom: 2px solid #FFCACA;
+}
+.bg-header{
+    background-color: #D86E6E;
+}

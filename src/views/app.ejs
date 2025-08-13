@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <title>D-produtividade</title>
+</head>
+<body class="bg-dark">
+    <%- include('partials/bootstrap') %>
+    <%- include('partials/header')%>
+    <div class="container mt-5 text-center">
+        <h1 class="my-3 text-white">Listas de Tarefas</h1>
+
+        <ul class="list-group my-5">
+        <% taskLists.forEach(taskList=> { %>
+          <li class="list-group-item d-flex align-items-center justify-content-between">
+            <a href="/app/<%= taskList.id %>" class="text-body-emphasis fs-5 text-decoration-none">
+              <%= taskList.title %>
+            </a>
+
+            <form action="/app/<%= taskList.id %>/excluir" method="post" class="my-2">
+              <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
+            </form>
+          </li>
+          <% }); %>
+      </ul>
+      <hr class="separator"/>
+      <a href="/app/nova-lista" class="btn-list mt-5">Nova Lista</a>
+    </div>
+    </div>
+    <%- include('partials/footer')%>
+</body>
+</html>

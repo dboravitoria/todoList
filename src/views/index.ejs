@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/logo.png" type="image/x-icon">
+    
+    <title>D-produtividade</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body class="bg-dark">
+    <%- include('partials/bootstrap') %>
+    <%- include('partials/header')%>
+    <div class="container mt-3 text-center">
+        <img src="/logo.png" alt="logo projeto" width="100px" height="100px" class="mb-2">
+        <h1 class="mb-2 text-light">Bem-vindo ao D-produtividade</h1>
+        <h3 class="text-light">Organize suas tarefas de forma eficiente e aumente sua produtividade!</h3>
+        <p class="text-white-50">O D-produtividade oferece uma maneira simples e intuitiva de gerenciar suas atividades diárias, seja no trabalho, nos estudos ou na vida pessoal. Crie listas personalziadas, adicione tarefas com facilidade, acompanhe o progresso e nunca mais esqueça uma tarefa importante!</p>
+        <form action="/app" method="get">
+            <button type="submit" class="btn-list">Comece a gerenciar suas Tarefas</button>
+        </form>
+    </div>
+    <%- include('partials/footer')%>
+    
+</body>
+</html>
