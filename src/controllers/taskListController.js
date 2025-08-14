@@ -47,6 +47,12 @@ const taskListController ={
         taskListModel.undoTask(listId, taskId)
         res.redirect(`/app/${listId}`)
     },
+    deleteTask: (req, res) => {
+        const { listId, taskId } = req.params; 
+        taskListModel.deleteTask(listId, taskId);
+        res.redirect(`/app/${listId}`);
+    }
+
 
 }
 

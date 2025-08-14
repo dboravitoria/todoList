@@ -13,7 +13,7 @@
     <div class="container mt-5 text-center">
         <h1 class="my-3 text-white">Listas de Tarefas</h1>
 
-        <ul class="list-group my-5">
+        <ul class="list-group my-5 bg-header">
         <% taskLists.forEach(taskList=> { %>
           <li class="list-group-item d-flex align-items-center justify-content-between">
             <a href="/app/<%= taskList.id %>" class="text-body-emphasis fs-5 text-decoration-none">
@@ -21,15 +21,16 @@
             </a>
 
             <form action="/app/<%= taskList.id %>/excluir" method="post" class="my-2">
-              <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
+              <button type="submit" class="color-danger delete-form">Excluir</button>
             </form>
           </li>
           <% }); %>
       </ul>
       <hr class="separator"/>
-      <a href="/app/nova-lista" class="btn-list mt-5">Nova Lista</a>
+      <a href="/app/nova-lista" class="btn-list-page mt-5">Nova Lista</a>
     </div>
     </div>
     <%- include('partials/footer')%>
+    <%- include('partials/confirm')%>
 </body>
 </html>

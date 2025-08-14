@@ -13,31 +13,46 @@
     <div class="container mt-5 text-center">
         <h1 class="text-white text-center mb-2"><%= taskList.title%></h1>
         <form action="/app/<%= taskList.id %>/nova-tarefa" method="POST" class="mb-3">
-            <div class="list-group-item d-flex align-items-end justify-content-between py-2">
-                <input type="text" class="form-control" name="title" placeholder="Adicionar nova tarefa...">
-                <button type="submit" class="btn-list mx-2 mt-1">Adicionar</button>
-            </div>
-        </form>
+  <div class="input-group">
+    <input type="text" class="form-control form-control-sm-custom" name="title" placeholder="Adicionar nova tarefa...">
+    <button type="submit" class="btn-list">Adicionar</button>
+  </div>
+</form>
+
+
         
             <ul class="list-group">
             <% taskList.tasks.forEach(task => { %>
-                <li class="list-group-item d-flex justify-content-between align-items-center <%= task.completed ? 'bg-success text-white' : '' %>">
+                <li class="list-group-item d-flex justify-content-between align-items-center <%= task.completed ? 'bg-success list-group-item.bg-success  text-white' : '' %>">
                 <%= task.title %>
                     <% if (!task.completed) { %>
-                    <form action="/app/<%= taskList.id %>/completar/<%= task.id %>" method="POST">
-                        <button type="submit" class="btn btn-success btn-sm">Completar</button>
-                    </form>
+                    <div class="form d-flex gap-2">
+                        <form action="/app/<%= taskList.id %>/completar/<%= task.id %>" method="POST">
+                            <button type="submit" class="color-success">Completar</button>
+                        </form>
+                         <form action="/app/<%= taskList.id %>/excluir/<%= task.id %>" method="POST">
+                            <button type="submit" class="color-danger delete-form">Excluir</button>
+                        </form>
+                    </div>
                     <% } else { %>
-                    <form action="/app/<%= taskList.id %>/desfazer/<%= task.id %>" method="POST">
-                        <button type="submit" class="btn btn-danger btn-sm">Desfazer</button>
-                    </form>
+                     <div class="form d-flex gap-2">
+                        <form action="/app/<%= taskList.id %>/desfazer/<%= task.id %>" method="POST">
+                            <button type="submit" class="color-desfazer">Desfazer</button>
+                        </form>
+                         <form action="/app/<%= taskList.id %>/excluir/<%= task.id %>" method="POST">
+                            <button type="submit" class="color-danger delete-form">Excluir</button>
+                         </form>    
+                                             
+                     </div>
                     <% } %>
+                   
                 </li>
                 <% }); %>
             </ul>
             <hr class="separator"/>
-            <a href="/app" class="btn btn-danger">Voltar</a>
+            <a href="/app" class="btn-list-page">Voltar</a>
     </div>
     <%- include('partials/footer')%>
+    <%- include('partials/confirm')%>
 </body>
 </html>

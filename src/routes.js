@@ -16,6 +16,7 @@ router.post('/app/:id/nova-tarefa', taskListController.addTask)
 router.post('/app/:id/excluir', taskListController.deleteList)
 router.post('/app/:listId/completar/:taskId', taskListController.completeTask)
 router.post('/app/:listId/desfazer/:taskId', taskListController.undoTask)
+router.post('/app/:listId/excluir/:taskId', taskListController.deleteTask)
 
 
 

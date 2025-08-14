@@ -51,5 +51,12 @@ module.exports = {
     const taskList = taskLists.find(list => list.id === listId)
     const task = taskList.tasks.find(task => task.id === taskId)
     task.completed = false
-  }
+  },
+  deleteTask: (listId, taskId) => {
+    const list = taskLists.find(list => list.id === listId);
+    if (list) {
+        list.tasks = list.tasks.filter(task => task.id !== taskId);
+    }
+}
+
 }
